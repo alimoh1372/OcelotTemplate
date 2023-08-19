@@ -6,7 +6,6 @@ namespace OcelotTemplate.Services.ArticleManagement.EfCore;
 
 public class ArticleDbContext : DbContext
 {
-    private IList<ArticleCategory> _articleCategories;
     public ArticleDbContext(DbContextOptions<ArticleDbContext> options) : base(options)
     {
 

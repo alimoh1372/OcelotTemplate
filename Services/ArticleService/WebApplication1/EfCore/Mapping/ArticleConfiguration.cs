@@ -24,9 +24,9 @@ public class ArticleConfiguration:IEntityTypeConfiguration<Article>
         builder
             .HasData(new List<Article>
             {
-                new Article(){Fk_ArticleCategoryId = 1,Name = "Sumsung a32 features",Description = "A description about samsung a32"},
-                new Article(){Fk_ArticleCategoryId = 2,Name = "Persian Carpet properties",Description = "A description about persian carpet"},
-                new Article(){Fk_ArticleCategoryId =1,Name = "logitec Keyboards",Description = "A description about logitec keyboards"},
+                new Article(){Id = 1,Fk_ArticleCategoryId = 1,Name = "Sumsung a32 features",Description = "A description about samsung a32"},
+                new Article(){Id=2,Fk_ArticleCategoryId = 2,Name = "Persian Carpet properties",Description = "A description about persian carpet"},
+                new Article(){Id=3, Fk_ArticleCategoryId =1,Name = "logitec Keyboards",Description = "A description about logitec keyboards"},
             });
 
     }

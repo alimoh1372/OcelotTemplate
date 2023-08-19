@@ -21,9 +21,9 @@ public class ArticleCategoryConfiguration:IEntityTypeConfiguration<ArticleCatego
 
         var _articleCategories = new ArticleCategory[]
         {
-            new ArticleCategory { Title = "Digital Articles", Description = "In this article just add about digital." },
-            new ArticleCategory { Title = "Public articles", Description = "In this article just add about digital." },
-            new ArticleCategory { Title = "Home product", Description = "In this article just add about Home facilities." }
+            new ArticleCategory {Id = 1,Title = "Digital Articles", Description = "In this article just add about digital." },
+            new ArticleCategory {Id = 2, Title = "Public articles", Description = "In this article just add about digital." },
+            new ArticleCategory {Id = 3, Title = "Home product", Description = "In this article just add about Home facilities." }
         };
         builder
             .HasData(_articleCategories);

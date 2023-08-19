@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:28825",
-      "sslPort": 44342
+      "applicationUrl": "http://localhost:5191",
+      "sslPort": 44306
     }
   },
   "profiles": {
-    "WebApplication1": {
+    "OcelotTemplate.Services.ProductManagement": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7010;http://localhost:5010",
-      "launchUrl": "Swagger",
+      "applicationUrl": "https://localhost:7020;http://localhost:5020",
+      "lunchUrl": "Swagger" ,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
