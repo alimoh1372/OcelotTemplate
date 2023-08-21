@@ -33,7 +33,7 @@ namespace OcelotTemplate.Services.ProductManagement.Controllers
             return Ok(json);
         }
 
-        [HttpGet("Product")]
+        [HttpGet("Product/{id}")]
 
         public async Task<IActionResult> Product(int id)
         {
@@ -60,6 +60,20 @@ namespace OcelotTemplate.Services.ProductManagement.Controllers
             await _context.Products.AddAsync(_article);
              await _context.SaveChangesAsync();
             return Ok($"Product with id={_article.Id} added successfully...");
+        }
+
+        [HttpGet("Categories")]
+        public async Task<IActionResult> GetCategories(CancellationToken cancellationToken)
+        {
+            var option = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true
+            };
+            
+            var categories = await _context.ProductCategories.ToListAsync(cancellationToken);
+            var jsonResult = JsonSerializer.Serialize(categories, option);
+            return Ok(jsonResult);
         }
     }
 }

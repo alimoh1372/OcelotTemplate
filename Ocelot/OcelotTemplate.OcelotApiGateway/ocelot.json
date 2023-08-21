@@ -1,10 +1,114 @@
 {
   "GlobalConfiguration": {
-
+    "BaseUrl": "https://localhost:7000;"
   },
   "Routes": [
     {
+      "UpstreamPathTemplate": "/Gateway/ProductApi/products",
+      "UpstreamHttpMethod": [ "Get" ],
 
+      "DownstreamPathTemplate": "/api/product/products",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7020
+        }
+      ],
+      "Key": "P1"
+    },
+    {
+      "UpstreamPathTemplate": "/Gateway/ProductApi/Product?id={number}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/product/Product/{number}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7020
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/Gateway/ProductApi/Categories",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Product/Categories",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7020
+        }
+      ],
+      "Key": "P2"
+    },
+    {
+      "UpstreamPathTemplate": "/Gateway/ProductApi/Create",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7020
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/Gateway/ArticleApi/GetArticles",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Article/Articles",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7010
+        }
+      ],
+      "Key": "A1"
+    },
+    {
+      "UpstreamPathTemplate": "/Gateway/ArticleApi/GetArticle",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Article/Article",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7010
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/Gateway/ArticleApi/Create",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Article",
+      "DownstreamScheme": "https",
+      "AllowAutoRedirect": true,
+      "DangerousAcceptAnyServerCertificateValidator": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7010
+        }
+      ]
     }
-  ] 
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "P1",
+        "A1"
+      ],
+      "UpstreamPathTemplate": "/Gateway/Aggregate1"
+    },
+    {
+      "RouteKeys": [
+        "P1",
+        "P2"
+      ],
+      "UpstreamPathTemplate": "/Gateway/Aggregate2",
+      "Aggregator": "JoinProductWithProductCategoriesAggregator"
+    }
+  ]
 }
