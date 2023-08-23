@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.WebSockets;
+using Microsoft.EntityFrameworkCore;
 using OcelotTemplate.OcelotTemplate.HotChocolateGraphql.EfCore.ProductDb;
 using OcelotTemplate.OcelotTemplate.HotChocolateGraphql.Graphql;
 using OcelotTemplate.OcelotTemplate.HotChocolateGraphql.Graphql.Types.ProductTypes.ProductAgg;
@@ -20,17 +21,20 @@ public static class DependencyInjection
         //{
         //    opt.UseSqlServer(connectionString);
         //});
-
+        
         services.AddGraphQL()
             .AddGraphQLServer()
             .RegisterDbContext<ProductDbContext>(DbContextKind.Pooled)
             // .AddProjections()  //Using this when want to load the children data
             .AddQueryType<Query>()
             .AddMutationType<Mutation>()
+            .AddSubscriptionType<Subscription>()
             .AddType<ProductType>()
             .AddType<ProductCategoryType>()
             .AddSorting()
-            .AddFiltering();
+            .AddFiltering()
+            //Manage and do subscriptoin in memmory such as connection id and client addresses
+            .AddInMemorySubscriptions();
         return services;
     }
 }

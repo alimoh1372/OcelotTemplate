@@ -4,6 +4,18 @@
   },
   "Routes": [
     {
+      "UpstreamPathTemplate": "/Gateway/graphql",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/graphql",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7030
+        }
+      ]
+    },
+    {
       "UpstreamPathTemplate": "/Gateway/ProductApi/products",
       "UpstreamHttpMethod": [ "Get" ],
 
