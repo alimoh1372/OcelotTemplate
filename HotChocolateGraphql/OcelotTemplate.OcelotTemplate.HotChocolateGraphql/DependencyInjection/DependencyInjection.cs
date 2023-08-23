@@ -26,6 +26,7 @@ public static class DependencyInjection
             .RegisterDbContext<ProductDbContext>(DbContextKind.Pooled)
             // .AddProjections()  //Using this when want to load the children data
             .AddQueryType<Query>()
+            .AddMutationType<Mutation>()
             .AddType<ProductType>()
             .AddType<ProductCategoryType>()
             .AddSorting()
